@@ -1,55 +1,56 @@
+
 .header{
-    display: flex;
-    border: 1px solid black;
+    display:flex;
     justify-content: space-between;
-    background-color: lightslategray;
-    
-    
+    margin:10px;
+    border: 1px solid black;
+    background-color: lightgray
+    ;
+}
+.nav-items > ul{
+    list-style-type: none;
+    display: flex;
+
+}
+.nav-items > ul > li{
+   padding: 10px;
 }
 .logo{
     width: 100px;
 }
-.body{
-    padding: 1rem;
-    border-style: ridge;
-    background-color:white ;
-    
+.card {
+        border: 15px;
+        width: 240px;
+        border-radius: 5px;
+        box-shadow: -1px 5px 10px 5px rgba(42, 42, 42, 0.2);
+        padding: 10px;
+        margin: 20px;
+        cursor: pointer;
 }
-.nav-items > ul {
-    
-    font-size: 15px;
-    display: flex;
-    list-style-type: none;
-}
-.nav-items > ul > li{
-    
-    padding: 10px;
-    margin: 10px;
-}
-.res-container{
-    display: flex;
-    flex-wrap: wrap;
-}
-.res-card {
-    padding:10px;
-    width: 215px;
-    margin: 5px;
-    height: 315px;
-    border: 1px solid black;
-    
-}
-.res-card:hover {
-    cursor: pointer;
-    background-color: lightgray;
-}
-.serach{
-    padding :  10px;
-}
-.res-logo {
-    
+
+.card > img {
     width: 100%;
 }
-.filter-btn{
-    margin: 10px;
-    cursor: pointer;
+.restuarant-list{
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
+.shimmer-card{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    flex-wrap:wrap;
+    background-color: gray;
+    margin: 20px;
+
+}
+.menu{
+    display: flex;
+}
+
+
+
+

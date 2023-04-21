@@ -2,18 +2,13 @@ import { useState, useEffect } from "react";
 import { reastarantList } from "../constants";
 import RestaurentCard from "./RestaurentCard";
 import Shimmer from "./Shimmer";
-import {Link} from "react-router-dom";
-import RestaurantMenu from "./RestaurentMenu";
-
-function filterData(searchText, reastarants) {
-  const filterData = reastarants.filter((reastarant) =>
-    reastarant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
-  );
-  return filterData;
-}
+import { Link } from "react-router-dom";
+// import RestaurantMenu from "./RestaurentMenu";
+import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
-  const [allReastarant,setAllReastarant] = useState([]);
+  const [allReastarant, setAllReastarant] = useState([]);
   const [Filteredreastarants, setFilteredreastarants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
@@ -31,10 +26,13 @@ const Body = () => {
     setAllReastarant(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredreastarants(json?.data?.cards[2]?.data?.data?.cards);
   }
+  // const isOnline = useOnline();
 
-  console.log("render");
+  // if (!isOnline) {
+  //   return <h1> offline ,Pleace check your Internet Connection</h1>;
+  // }
 
-  if (!allReastarant) return null ;
+  if (!allReastarant) return null;
 
   // if (Filteredreastarants?.length == 0) return <h1>No Restaurant Match your filter !!</h1>
 
@@ -65,8 +63,11 @@ const Body = () => {
       <div className="restuarant-list">
         {Filteredreastarants.map((reastarant) => {
           return (
-            <Link to ={"/restaurent/:resId" + reastarant.data.id} key={reastarant.data.id}>
-            <RestaurentCard {...reastarant.data} />
+            <Link
+              to={"/restaurent/:resId" + reastarant.data.id}
+              key={reastarant.data.id}
+            >
+              <RestaurentCard {...reastarant.data} />
             </Link>
           );
         })}

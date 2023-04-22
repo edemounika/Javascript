@@ -11,7 +11,7 @@ const loggedInUser = () => {
 
 const Title = () => (
   <a href="/">
-    <img className="logo" alt="logo" src={Logo} />
+    <img className="h-28 p-2" alt="logo" src={Logo} />
   </a>
 );
 
@@ -21,24 +21,24 @@ const Header = () => {
   const isOnline = useOnline;
 
   return (
-    <div className="header">
+    <div class="flex justify-between bg-pink-50 shadow-lg ">
       <Title />
       <div className="nav-items">
-        <ul>
-          <Link to="/">
-            <li>Home</li>
-          </Link>
+        <ul className="flex py-10">
+          <li className="px-2">
+          <Link to="/">Home</Link>
+          </li>
 
           <Link to="/about">
-            <li>About</li>
+            <li className="px-2">About</li>
           </Link>
           
           <Link to="/contact">
-            <li>Contact</li>
+            <li className="px-2">Contact</li>
           </Link>
-          <li>cart</li>
+          <li className="px-2">Cart</li>
           <Link to="/instamart">
-            <li>Instamart</li>
+            <li className="px-2">Instamart</li>
           </Link>
           
         </ul>

@@ -34,24 +34,29 @@ const Body = () => {
 
   if (!allReastarant) return null;
 
+  // const searchBtnCSS = {
+  //   backgroundColor:"red",
+  // };
+
   // if (Filteredreastarants?.length == 0) return <h1>No Restaurant Match your filter !!</h1>
 
   return allReastarant.length == 0 ? (
     <Shimmer />
   ) : (
     <>
-      <div className="Search-container">
+      <div className="Search-container p-5 bg-pink-50 my-5">
         <input
           type="text"
-          className="search-input"
+          className="focus:bg-zinc-400 p-2 m-2"
           placeholder="Search"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
-        <button
-          className="search-btn"
+        <button 
+        className="p-2 m-2 bg-purple-300 hover:bg-purple-700 text-black rounded-lg"
+          
           onClick={() => {
             const data = filterData(searchText, allReastarant);
             setFilteredreastarants(data);
@@ -60,7 +65,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restuarant-list">
+      <div className="flex flex-wrap">
         {Filteredreastarants.map((reastarant) => {
           return (
             <Link
@@ -76,3 +81,4 @@ const Body = () => {
   );
 };
 export default Body;
+

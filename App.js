@@ -1,4 +1,4 @@
-import React ,{lazy,Suspense} from "react";
+import React ,{lazy,Suspense, useState} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import RestaurentMenu from "./components/RestaurentMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/userContext";
 // import Instamart from "./components/Instamart"; insted of write lazy import
 
 //chunking
@@ -20,12 +21,24 @@ const Instamart = lazy( () => import("./components/Instamart"));
 const About = lazy( () => import("./components/About"));
 
 const AppLayout = () => {
+
+  //[user->Thisuser is dynamic it will modify according to my useEffect]
+  const [user,setUser] = useState({ 
+    name:"Mounika",
+    email:"edemounika99@gmail.com",
+  });
   return (
     <React.Fragment>
+      <UserContext.Provider 
+      value={{
+        user:user,
+        setUser:setUser,
+        }}>
       <Header />
     {/* Outlet */}
      <Outlet/>
       <Footer />
+      </UserContext.Provider>
     </React.Fragment>
   );
 };

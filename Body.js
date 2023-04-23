@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { reastarantList } from "../constants";
 import RestaurentCard from "./RestaurentCard";
 import Shimmer from "./Shimmer";
@@ -6,11 +6,14 @@ import { Link } from "react-router-dom";
 // import RestaurantMenu from "./RestaurentMenu";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/userContext";
+
 
 const Body = () => {
   const [allReastarant, setAllReastarant] = useState([]);
   const [Filteredreastarants, setFilteredreastarants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const {user,setUser} = useContext(UserContext);
 
   useEffect(() => {
     //API call
@@ -64,6 +67,22 @@ const Body = () => {
         >
           Search
         </button>
+        <input value={user.name} onChange={
+          e => setUser({
+            ...user,
+            name:e.target.value,
+            
+
+        })
+        }></input>
+        <input value={user.email} onChange={
+          e => setUser({
+            ...user,
+            email:e.target.value,
+           
+
+        })
+        }></input>
       </div>
       <div className="flex flex-wrap">
         {Filteredreastarants.map((reastarant) => {

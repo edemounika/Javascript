@@ -2,7 +2,8 @@
 import { Component, useState } from "react";
 import ProfileFunctionalComponent from "./Profile";
 import Profile from "./ProfileClass";
-import { Component } from "react";
+import UserContext from "../utils/userContext";
+
 
 // //****************This Example combined class based componentprofile and function componenet profile */
 // const About = () => {
@@ -39,6 +40,10 @@ class About extends Component {
     return (
       <div>
         <h1>About us page</h1>
+        {/* //context used in classbased components */}
+        <UserContext.Consumer>
+          {({user}) => <h4 className="font-bold text-xl p-10">{user.name}-{user.email}</h4>}
+          </UserContext.Consumer>
         <p>This is About us</p>
         <Profile name={"first child"} />
         {/* <Profile name={"second child"} /> */}
